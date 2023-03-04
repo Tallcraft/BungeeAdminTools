@@ -16,7 +16,7 @@
 		</repository>
 		<repository>
 			<id>md-5-repo</id>
-			<url>http://repo.md-5.net/content/groups/public/</url>
+			<url>https://repo.md-5.net/content/groups/public/</url>
 		</repository>
 	</repositories>
 
@@ -70,24 +70,6 @@
 			<artifactId>sqlite-jdbc</artifactId>
 			<version>3.7.15-M1</version>
 			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.7.2</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.7.2</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.17</version>
-			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.imaginarycode.minecraft</groupId>
