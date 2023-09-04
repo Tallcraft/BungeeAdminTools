@@ -61,7 +61,7 @@ public class BAT extends Plugin {
 		getLogger().setLevel(Level.INFO);
 		if (!ProxyServer.getInstance().getName().equals("BungeeCord")) {
 		  getLogger().warning("BungeeCord version check disabled because a fork has been detected."
-              + " Make sur your fork is based on a BungeeCord build > #" + requiredBCBuild);
+              + " Make sure your fork is based on a BungeeCord build > #" + requiredBCBuild);
 		}
 		else if(getBCBuild() < requiredBCBuild && !new File(getDataFolder(), "skipversiontest").exists()){
 		  getLogger().severe("Your BungeeCord build (#" + getBCBuild() + ") is not supported. Please use at least BungeeCord #" + requiredBCBuild);
