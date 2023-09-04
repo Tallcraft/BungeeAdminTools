@@ -3,6 +3,7 @@ package fr.Alphart.BAT;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.channels.Channels;
@@ -226,9 +227,18 @@ public class BAT extends Plugin {
 		}
 
 		// Load the driver
-		try (URLClassLoader classLoader = new URLClassLoader(new URL[]{driverPath.toURI().toURL()})) {
-			classLoader.loadClass("org.sqlite.JDBC");
-			Class.forName("org.sqlite.JDBC");//, true, classLoader);
+		try {
+			URLClassLoader systemClassLoader;
+			URL u;
+			Class<URLClassLoader> sysclass;
+			u = driverPath.toURI().toURL();
+			systemClassLoader = (URLClassLoader) ClassLoader.getSystemClassLoader();
+			sysclass = URLClassLoader.class;
+			final Method method = sysclass.getDeclaredMethod("addURL", URL.class);
+			method.setAccessible(true);
+			method.invoke(systemClassLoader, u);
+
+			Class.forName("org.sqlite.JDBC");
 			return true;
 		} catch (final Throwable t) {
 			getLogger().severe("The sqlite driver cannot be loaded. Please report this error : ");
