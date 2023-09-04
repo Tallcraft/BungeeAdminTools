@@ -76,7 +76,7 @@ public class DataSourceHandler {
 			BAT.getInstance().getLogger().config("BoneCP is loaded !");
 		} catch (final SQLException e) {
 			e.printStackTrace();
-			BAT.getInstance().getLogger().severe("BAT encounters a problem during the initialization of the database connection."
+			BAT.getInstance().getLogger().severe("BAT encountered a problem during the initialization of the database connection."
 					+ " Please check your logins and database configuration.");
 			if(e.getCause() instanceof CommunicationsException){
 			    BAT.getInstance().getLogger().severe(e.getCause().getMessage());
@@ -108,7 +108,7 @@ public class DataSourceHandler {
 					+ "bat_database.db");
 			SQLiteConn.close();
 		} catch (SQLException e) {
-			BAT.getInstance().getLogger().severe("BAT encounters a problem during the initialization of the sqlite database connection.");
+			BAT.getInstance().getLogger().severe("BAT encountered a problem during the initialization of the sqlite database connection.");
 			if(e.getMessage() != null){
 				BAT.getInstance().getLogger().severe("Error message : " + e.getMessage());
 			}
