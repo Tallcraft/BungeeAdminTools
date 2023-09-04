@@ -142,21 +142,9 @@ public class LookupFormatter {
         final String last_ip = !"0.0.0.0".equals(pDetails.getLastIP())
                 ? ((displayIP) ? pDetails.getLastIP() : _("hiddenIp"))
                 : _("unknownIp");
-                
-        String name_history_list;
-        // Create a function for that or something better than a big chunk of code inside the lookup
-        if(ProxyServer.getInstance().getConfig().isOnlineMode()){
-            try{
-                name_history_list = Joiner.on("&e, &a").join(MojangAPIProvider.getPlayerNameHistory(pName));
-            }catch(final RuntimeException e){
-                name_history_list = "unable to fetch player's name history. Check the logs";
-                BAT.getInstance().getLogger().severe("An error occured while fetching " + pName + "'s name history from mojang servers."
-                        + "Please report this : ");
-                e.printStackTrace();
-            }
-        }else{
-            name_history_list = "offline server";
-        }
+
+        //Mojang no longer supports name history lookups
+        String name_history_list = "Deprecated.";
         
         int commentsNumber = pDetails.getComments().size();
         String last_comments = "";
