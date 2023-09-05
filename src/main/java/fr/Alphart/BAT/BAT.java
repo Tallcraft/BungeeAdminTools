@@ -61,7 +61,7 @@ public class BAT extends Plugin {
 		getLogger().setLevel(Level.INFO);
 		if (!ProxyServer.getInstance().getName().equals("BungeeCord")) {
 		  getLogger().warning("BungeeCord version check disabled because a fork has been detected."
-              + " Make sur your fork is based on a BungeeCord build > #" + requiredBCBuild);
+              + " Make sure your fork is based on a BungeeCord build > #" + requiredBCBuild);
 		}
 		else if(getBCBuild() < requiredBCBuild && !new File(getDataFolder(), "skipversiontest").exists()){
 		  getLogger().severe("Your BungeeCord build (#" + getBCBuild() + ") is not supported. Please use at least BungeeCord #" + requiredBCBuild);
@@ -234,9 +234,9 @@ public class BAT extends Plugin {
 			u = driverPath.toURI().toURL();
 			systemClassLoader = (URLClassLoader) ClassLoader.getSystemClassLoader();
 			sysclass = URLClassLoader.class;
-			final Method method = sysclass.getDeclaredMethod("addURL", new Class[] { URL.class });
+			final Method method = sysclass.getDeclaredMethod("addURL", URL.class);
 			method.setAccessible(true);
-			method.invoke(systemClassLoader, new Object[] { u });
+			method.invoke(systemClassLoader, u);
 
 			Class.forName("org.sqlite.JDBC");
 			return true;
